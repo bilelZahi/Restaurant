@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoUrl=""
+const mongoUrl="mongodb://localhost:27017/DataProject"
 const connect =mongoose.connect(mongoUrl,{
 
     useNewUrlParser: true,
