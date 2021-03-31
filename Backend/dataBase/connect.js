@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoUrl="mongodb://localhost:27017/DataProject"
+const mongoUrl ="mongodb+srv://bilel:trabelsi@cluster0.dn70h.mongodb.net/RestoDB?retryWrites=true&w=majority"
 const connect =mongoose.connect(mongoUrl,{
 
     useNewUrlParser: true,
