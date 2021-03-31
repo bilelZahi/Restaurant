@@ -1,13 +1,20 @@
 const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
+const connect = require('./dataBase/connect');
 const userApi = require('./routes/userApi');
-const path = require('path');
-const connect = require('./dataBase/connect.js');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+app.use(bodyParser.json());
+var urlencodeParser = bodyParser.urlencoded({extended:false});
+
+// const path = require('path');
+// const cors = require('cors');
 
 app.use('/user', userApi);
 app.use('/login',userApi);
-app.use(bodyParser.json());
+
+// app.use(cors())
 
 app.listen(3000,()=>{
     console.log('done');

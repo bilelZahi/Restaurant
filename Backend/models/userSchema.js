@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   
-  Name : {type : String , required:true},
-  email : {type : String , required:true},
-  password : {type : String , required:true},
-  confirmpassword : {type : String , required:true},
+  Name : String ,
+  email :  String ,
+  password :  String ,
+
   
 },{timestamps:true});
 const user = mongoose.model('user',userSchema);
