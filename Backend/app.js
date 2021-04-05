@@ -1,6 +1,10 @@
 const express = require('express');
 const connect = require('./dataBase/connect');
+
 const userApi = require('./routes/userApi');
+const sandwichSchemaApi = require ('./routes/sandwichSchemaApi');
+const ingrediantsSchemaApi = require ('./routes/ingrediantsSchemaApi')
+
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -13,6 +17,10 @@ var urlencodeParser = bodyParser.urlencoded({extended:false});
 
 app.use('/user', userApi);
 app.use('/login',userApi);
+app.use ('/menu' , sandwichSchemaApi)
+app.use ('/menu' , ingrediantsSchemaApi)
+
+
 
 // app.use(cors())
 

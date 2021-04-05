@@ -8,7 +8,6 @@ const router = express.Router();
 
 // register
 router.post('/register',(req,res) => {
-    console.log(req.body);
       const user = User.create(req.body)
          .then(result =>{res.json(result)})
          .catch(error =>console.log(error));
@@ -27,4 +26,5 @@ router.post('/register',(req,res) => {
           }
       }
   );
+  
 module.exports = router;
