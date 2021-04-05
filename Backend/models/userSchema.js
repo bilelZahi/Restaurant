@@ -7,6 +7,7 @@ const userSchema = new Schema({
   Name : String ,
   email :  String ,
   password :  String ,
+  role : [String]
 
   
 },{timestamps:true});
