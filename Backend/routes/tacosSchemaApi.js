@@ -1,13 +1,13 @@
 const express = require("express");
 
-const Sandwich = require("../models/sandwichSchema");
+const Tacos = require("../models/tacosSchema");
 const router = express.Router();
 
 ////////////////// add_sandwich ///////////////////////
 
-router.post("/sandwich", (req, res) => {
-  const sandwich = new Sandwich(req.body);
-  sandwich.save()
+router.post("/tacos", (req, res) => {
+  const tacos = new Tacos(req.body);
+  tacos.save()
     .then((result) => {
       res.json(result);
     })
@@ -16,27 +16,27 @@ router.post("/sandwich", (req, res) => {
 
 ////////////////// delete_sandwich ////////////////////
 
-router.delete('/deleteSandwich/:id',(req,res)=> {
+router.delete('/deleteTacos/:id',(req,res)=> {
     _id=req.params.id
-    Sandwich.findByIdAndDelete(_id)
+    Tacos.findByIdAndDelete(_id)
     .then (()=>{res.send('deleted , verifier data base')})
     .catch (err => console.log("err"))
   })
 
 //////////////// edit_sandwich ///////////////////////
 
-  router.put('/editSandwich/:id' , (req,res)=> {
-    Sandwich.findByIdAndUpdate(req.params.id,req.body,{new:true})
+  router.put('/editTacos/:id' , (req,res)=> {
+    Tacos.findByIdAndUpdate(req.params.id,req.body,{new:true})
 
     .then(result => {res.send(result)})
     .catch (err => console.log(err))
   })
 
-//////////////////////////////////////////////////////
+///////////////// effect ////////////////////////
 
-router.put ('/affect/:idSandwich/:idIngrediants' , (req,res) =>{
+router.put ('/tacos/:idTacos/:idIngrediants' , (req,res) =>{
 
-  Sandwich.findByIdAndUpdate(req.params.idSandwich , {$push:{ingrediants :  req.params.idIngrediants}})
+  Tacos.findByIdAndUpdate(req.params.idTacos , {$push:{ingrediants :  req.params.idIngrediants}})
   .then(result => {res.send(result)})
   .catch (err => console.log(err))
 
@@ -44,8 +44,8 @@ router.put ('/affect/:idSandwich/:idIngrediants' , (req,res) =>{
 
 ///////////////// get all ///////////////////
 
-router.get('/findAllSandwichs',(req,res)=>{
-  Sandwich.find()
+router.get('/findAllTacos',(req,res)=>{
+  Tacos.find()
   .then(result => {res.send(result)})
   .catch (err => console.log(err))
 })

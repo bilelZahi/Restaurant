@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const sandwichSchema = new Schema({
+const tacosShema = new Schema({
     prixPrincipale : String ,
     nom : String ,
     compositions : Array,
@@ -12,5 +12,5 @@ const sandwichSchema = new Schema({
     
 }, {timesTamps:true});
 
-const sandwich = mongoose.model('sandwich',sandwichSchema);
-module.exports = sandwich
+const tacos = mongoose.model('tacos',tacosShema);
+module.exports = tacos

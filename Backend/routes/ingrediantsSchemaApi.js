@@ -17,22 +17,24 @@ router.post("/ingrediant", (req, res) => {
 
 ////////////////////////////////////////////////
 
-// router.delete('/deleteSandwich/:id',(req,res)=> {
-//     _id=req.params.id
-//     sandwich.findByIdAndDelete(_id)
-//     .then (()=>{res.send('deleted , verifier data base')})
-//     .catch (err => console.log("err"))
-//   })
+router.delete('/deleteIngrediant/:id',(req,res)=> {
+    _id=req.params.id
+    Ingrediant.findByIdAndDelete(_id)
+    .then (()=>{res.send('deleted , verifier data base')})
+    .catch (err => console.log("err"))
+  })
 
 //////////////////////////////////////////////
 
-//   router.put('/editSandwich/:id' , (req,res)=> {
-//     sandwich.findByIdAndUpdate(req.params.id,req.body,{new:true})
+  router.put('/editIngrediant/:id' , (req,res)=> {
+    Ingrediant.findByIdAndUpdate(req.params.id,req.body,{new:true})
 
-//     .then(result => {res.send(result)})
-//     .catch (err => console.log(err))
-//   })
+    .then(result => {res.send(result)})
+    .catch (err => console.log(err))
+  })
 
 ////////////////////////////////////////////////
+
+
   
 module.exports = router;
