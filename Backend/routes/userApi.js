@@ -6,7 +6,7 @@ const router = express.Router();
 
 ////////////////// register ///////////////////////
 
-router.post('/register',(req,res) => {
+router.post('/registerr',(req,res) => {
       const user = User.create(req.body)
 
          .then(result =>{res.json(result)})
