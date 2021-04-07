@@ -2,10 +2,11 @@ const express = require('express');
 const connect = require('./dataBase/connect');
 
 const userApi = require('./routes/userApi');
-const sandwichSchemaApi = require ('./routes/sandwichSchemaApi');
-const ingrediantsSchemaApi = require ('./routes/ingrediantsSchemaApi')
-const burgerSchemaApi = require ('./routes/burgerSchemaApi')
-const tacosSchemaApi = require ('./routes/tacosSchemaApi')
+const sandwichApi = require ('./routes/sandwichApi');
+const ingrediantApi = require ('./routes/ingrediantApi')
+const burgerApi = require ('./routes/burgerApi')
+const tacosApi = require ('./routes/tacosApi')
+const mailer = require ('./routes/sendMail')
 
 const bodyParser = require('body-parser');
 
@@ -14,17 +15,15 @@ const app = express();
 app.use(bodyParser.json());
 var urlencodeParser = bodyParser.urlencoded({extended:false});
 
-app.use ('/user', userApi);
+app.use ('/user' , userApi);
 app.use ('/login',userApi);
-app.use ('/menu' , sandwichSchemaApi);
-app.use ('/menu' , ingrediantsSchemaApi);
-app.use ('/menu' , burgerSchemaApi);
-app.use ('/menu' , tacosSchemaApi);
+app.use ('/menu' , sandwichApi);
+app.use ('/menu' , ingrediantApi);
+app.use ('/menu' , burgerApi);
+app.use ('/menu' , tacosApi);
+app.use ('/mail' , mailer);
 
 
-
-
-// app.use(cors())
 
 app.listen(3000,()=>{
     console.log('done');
