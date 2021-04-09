@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { emailValidator, matchingPasswords } from '../../theme/utils/app-validators';
 import { AuthService } from 'src/app/services/auth.service';
+// import  {MailService } from 'src/app/services/mail.service';
 
 
 @Component({
@@ -45,16 +46,32 @@ export class SignInComponent implements OnInit {
 //////////////////// register /////////////////////
 
 
-public onRegisterFormSubmit(values:Object):void {
+public onRegisterFormSubmit():void {
+
   if (this.registerForm.valid && this.registerForm.controls.password.value==this.registerForm.controls.confirmPassword.value) {
+
     this.authService.register(this.registerForm.value).subscribe((res)=>{
-      this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
+
+      if( res == 'email  exist!'){
+        this.snackBar.open("Password and confirm password don't match!", '×', { panelClass: 'info', verticalPosition: 'top', duration: 3000 });
+
+      }
+      else{
+        this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 })
+
+      }
+
+      // this.authService.mail(this.registerForm.value.email);
+
     })
+    
    
   }
-  else {
-    this.snackBar.open("Password and confirm password don't match!", '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
-  }
+  
+  
+
+  
 }
+
 
 }
