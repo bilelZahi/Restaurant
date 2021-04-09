@@ -7,7 +7,8 @@ const userSchema = new Schema({
   Name : String ,
   email :  String ,
   password :  String ,
-  role : [String]
+  
+  role : {type:String , default:"client"}
 
   
 },{timestamps:true});

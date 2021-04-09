@@ -1,5 +1,6 @@
 var express = require('express');
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
+const user = require('../models/userSchema');
 var router =express.Router();
 
 router.post ('/sendMail' , async  (req,res)=> {
@@ -16,11 +17,12 @@ router.post ('/sendMail' , async  (req,res)=> {
   
     let info = await transporter.sendMail({
       from: 'bileltrabelsi445@gmail.com', 
-      to: req.body.email, 
+      to: user.email, // schema
       
       subject: "BIENVENUE !", 
       text:  req.body.Name + " votre compte vient d'être créé" + "http://localhost:4200"
     });
+    console.log(user.email);
   res.json({message:"email envoyé"})
    
     })
