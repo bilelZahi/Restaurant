@@ -8,5 +8,10 @@ const connect =mongoose.connect(mongoUrl,{
     useFindAndModify:false
   }).then(result =>()=>{
       console.log('server is http://localhost/3000');
-  }).catch(error =>console.log(error)); 
+  }).catch(error =>console.log(error));
+  
+  
+
+
+  
   module.exports=connect;
