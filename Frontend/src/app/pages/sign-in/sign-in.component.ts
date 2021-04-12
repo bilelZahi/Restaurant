@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { emailValidator, matchingPasswords } from '../../theme/utils/app-validators';
+import { AuthService } from 'src/app/services/auth.service';
+// import  {MailService } from 'src/app/services/mail.service';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -13,7 +16,7 @@ export class SignInComponent implements OnInit {
   loginForm: FormGroup;
   registerForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, public router:Router, public snackBar: MatSnackBar) { }
+  constructor(public formBuilder: FormBuilder, public router:Router, public snackBar: MatSnackBar , private authService : AuthService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -30,16 +33,45 @@ export class SignInComponent implements OnInit {
 
   }
 
+  ////////////////// login /////////////////////
+
   public onLoginFormSubmit(values:Object):void {
     if (this.loginForm.valid) {
       this.router.navigate(['/']);
     }
   }
 
-  public onRegisterFormSubmit(values:Object):void {
-    if (this.registerForm.valid) {
-      this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
-    }
+
+
+//////////////////// register /////////////////////
+
+
+public onRegisterFormSubmit():void {
+
+  if (this.registerForm.valid && this.registerForm.controls.password.value==this.registerForm.controls.confirmPassword.value) {
+
+    this.authService.register(this.registerForm.value).subscribe((res)=>{
+
+      if( res == 'email  exist!'){
+        this.snackBar.open("Password and confirm password don't match!", '×', { panelClass: 'info', verticalPosition: 'top', duration: 3000 });
+
+      }
+      else{
+        this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 })
+
+      }
+
+      // this.authService.mail(this.registerForm.value.email);
+
+    })
+    
+   
   }
+  
+  
+
+  
+}
+
 
 }

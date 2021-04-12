@@ -2,29 +2,46 @@ const express = require('express');
 
 const User = require('../models/userSchema');
 const router = express.Router();
-// const jwt = require("jsonwebtoken");
 
 
+////////////////// register ///////////////////////
 
-// register
-router.post('/register',(req,res) => {
-    console.log(req.body);
-      const user = User.create(req.body)
+router.post('/register', async (req,res) => {
+
+   const addUser = await User.findOne({email: req.body.email});
+
+   if(addUser==null){
+
+   User.create(req.body)
          .then(result =>{res.json(result)})
          .catch(error =>console.log(error));
-       
-       
-       });
-    //  login
+
+   }
+   else{
+   
+   return res.json('email  exist!');
+
+
+   }
+});
+
+/////////////////// login //////////////////////////
+
     router.post('/login', async (req, res) => {
+       console.log(verif);
       const connectedUser = await User.findOne({email: req.body.email , password : req.body.password});
-      if(!connectedUser )
-      {
+
+      if (!connectedUser ){
+
          return res.json({message: 'email or password is invalid!'});
+
       }   
-          else{
-                return res.json({message: 'login successfully!'});
-          }
+      else{
+
+         return res.json({message: 'login successfully!'});
+         
       }
-  );
+   }
+);
+  
 module.exports = router;
