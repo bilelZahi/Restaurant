@@ -34,23 +34,26 @@ export class SignInComponent implements OnInit {
 
   ////////////////// login /////////////////////
 
-  public onLoginFormSubmit(values:Object):void {
+  public onLoginFormSubmit():void {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe((res:any)=>{
-        if(JSON.parse(JSON.stringify(res)).message=='Auth failed'){
-         this.snackBar.open('verif pass or email', '×', { panelClass: 'warn', verticalPosition: 'top', duration: 3000 });
-        
-        }
-        else{
-         localStorage.setItem('token',JSON.stringify(res.token));
-         this.authService.isLoginSubject.next(true)
-         localStorage.setItem("isLogin",JSON.stringify(this.authService.isLoginSubject.value))
+      
+      this.authService.login(this.loginForm.value).subscribe((res)=>{
          
-         this.router.navigateByUrl('/')
-        
-        }
+        localStorage.setItem('token',JSON.stringify(res));
          
-       
+        if(JSON.parse(JSON.stringify(res)).message=='email or password is invalid!'){
+          this.snackBar.open('verif pass or email', '×', { panelClass: 'warn', verticalPosition: 'top', duration: 3000 });
+         
+         }
+         else{      
+           
+          this.snackBar.open('You login successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 })
+
+          
+          this.router.navigateByUrl('products/electronics')
+         
+         }
+
        })
      }
   }
@@ -67,10 +70,12 @@ public onRegisterFormSubmit():void {
     this.authService.register(this.registerForm.value).subscribe((res)=>{
 
       if( res == 'email  exist!'){
-        this.snackBar.open("email exist !", '×', { panelClass: 'info', verticalPosition: 'top', duration: 3000 });
+
+        this.snackBar.open("email exist !", '×', { panelClass: 'warn', verticalPosition: 'top', duration: 3000 });
 
       }
       else{
+
         this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 })
 
       }

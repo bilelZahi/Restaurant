@@ -1,7 +1,9 @@
 const express = require('express');
+const router = express.Router();
 
 const User = require('../models/userSchema');
-const router = express.Router();
+const jwt = require('jsonwebtoken')
+
 
 
 ////////////////// register ///////////////////////
@@ -28,7 +30,6 @@ router.post('/register', async (req,res) => {
 /////////////////// login //////////////////////////
 
     router.post('/login', async (req, res) => {
-       console.log(verif);
       const connectedUser = await User.findOne({email: req.body.email , password : req.body.password});
 
       if (!connectedUser ){
@@ -38,7 +39,13 @@ router.post('/register', async (req,res) => {
       }   
       else{
 
-         return res.json({message: 'login successfully!'});
+         const data  = {
+            email:connectedUser.email,
+            userId:connectedUser._id
+          }
+  
+          const createToken = jwt.sign(data , 'secret' ,{expiresIn:"1d"});
+         return res.json({message: 'login successfully!' , token : createToken, connectedUser });
          
       }
    }
