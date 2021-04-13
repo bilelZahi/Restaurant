@@ -15,7 +15,6 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 var urlencodeParser = bodyParser.urlencoded({extended:false});
-//oussama.loumi@esprit.tn
 app.use ('/user' , userApi);
 app.use ('/login',userApi);
 app.use ('/menu' , sandwichApi);

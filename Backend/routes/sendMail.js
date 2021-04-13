@@ -5,26 +5,27 @@ var router =express.Router();
 
 router.post ('/sendMail' , async  (req,res)=> {
    
-  console.log(req.body.email);
     let transporter = nodemailer.createTransport({
       
       service: 'gmail', 
       auth: {
-        user:'bileltrabelsi445@gmail.com', 
-        pass: '2020474990bilel'
+        user:'Point.B.restaurant@gmail.com', 
+        pass: 'bileltrabelsi'
       },
     });
   
     let info = await transporter.sendMail({
-      from: 'bileltrabelsi445@gmail.com', 
-      to: user.email, // schema
+      from: 'Point.B.restaurant@gmail.com', 
+      to : req.body.email,
       
       subject: "BIENVENUE !", 
-      text:  req.body.Name + " votre compte vient d'être créé" + "http://localhost:4200"
+      text: "" ,
+       html : `bonjour ` + req.body.Name + ` votre compte vient d'être créé <br> simple click <br>  http://localhost:4200 `
+       
     });
-    console.log(user.email);
   res.json({message:"email envoyé"})
-   
+   console.log(req.body.Name);
+   console.log(req.body.email);
     })
   
   module.exports = router;

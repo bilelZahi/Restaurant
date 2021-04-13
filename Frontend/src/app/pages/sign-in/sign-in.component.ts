@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { emailValidator, matchingPasswords } from '../../theme/utils/app-validators';
 import { AuthService } from 'src/app/services/auth.service';
-// import  {MailService } from 'src/app/services/mail.service';
 
 
 @Component({
@@ -35,10 +34,28 @@ export class SignInComponent implements OnInit {
 
   ////////////////// login /////////////////////
 
-  public onLoginFormSubmit(values:Object):void {
+  public onLoginFormSubmit():void {
     if (this.loginForm.valid) {
-      this.router.navigate(['/']);
-    }
+      
+      this.authService.login(this.loginForm.value).subscribe((res)=>{
+         
+        localStorage.setItem('token',JSON.stringify(res));
+         
+        if(JSON.parse(JSON.stringify(res)).message=='email or password is invalid!'){
+          this.snackBar.open('verif pass or email', '×', { panelClass: 'warn', verticalPosition: 'top', duration: 3000 });
+         
+         }
+         else{      
+           
+          this.snackBar.open('You login successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 })
+
+          
+          this.router.navigateByUrl('products/electronics')
+         
+         }
+
+       })
+     }
   }
 
 
@@ -53,24 +70,20 @@ public onRegisterFormSubmit():void {
     this.authService.register(this.registerForm.value).subscribe((res)=>{
 
       if( res == 'email  exist!'){
-        this.snackBar.open("Password and confirm password don't match!", '×', { panelClass: 'info', verticalPosition: 'top', duration: 3000 });
+
+        this.snackBar.open("email exist !", '×', { panelClass: 'warn', verticalPosition: 'top', duration: 3000 });
 
       }
       else{
+
         this.snackBar.open('You registered successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 })
 
       }
-
-      // this.authService.mail(this.registerForm.value.email);
-
     })
     
-   
   }
-  
-  
+  this.registerForm.reset()
 
-  
 }
 
 

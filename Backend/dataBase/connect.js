@@ -6,13 +6,7 @@ const connect =mongoose.connect(mongoUrl,{
     useNewUrlParser: true,
       useFindAndModify: false,
       useUnifiedTopology: true,
-    // useCreateIndex: true,
   }).then(result =>()=>{
       console.log('server is http://localhost/3000');
-  }).catch(error =>console.log(error));
-  
-  
-
-
-  
-  module.exports=connect;
+  }).catch(error =>console.log(error)); 
+  module.exports=connect; 
