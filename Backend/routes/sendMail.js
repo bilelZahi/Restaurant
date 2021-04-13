@@ -16,16 +16,16 @@ router.post ('/sendMail' , async  (req,res)=> {
   
     let info = await transporter.sendMail({
       from: 'Point.B.restaurant@gmail.com', 
-      to : req.body.email,
+      to : req.body.email, 
       
       subject: "BIENVENUE !", 
       text: "" ,
        html : `bonjour ` + req.body.Name + ` votre compte vient d'être créé <br> simple click <br>  http://localhost:4200 `
        
     });
+
   res.json({message:"email envoyé"})
-   console.log(req.body.Name);
-   console.log(req.body.email);
+  
     })
   
   module.exports = router;
