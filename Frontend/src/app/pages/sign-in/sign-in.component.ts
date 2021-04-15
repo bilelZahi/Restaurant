@@ -42,16 +42,24 @@ export class SignInComponent implements OnInit {
         localStorage.setItem('token',JSON.stringify(res));
          
         if(JSON.parse(JSON.stringify(res)).message=='email or password is invalid!'){
+
           this.snackBar.open('verif pass or email', '×', { panelClass: 'warn', verticalPosition: 'top', duration: 3000 });
+
          
          }
-         else{      
+         else if (JSON.parse(JSON.stringify(res)).connectedUser.role=='admin'){      
            
-          this.snackBar.open('You login successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 })
+          this.snackBar.open('admin login successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 })
 
           
-          this.router.navigateByUrl('products/electronics')
+          this.router.navigateByUrl('account/information')
          
+         }
+         else {
+          this.snackBar.open('client login successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 })
+
+          this.router.navigateByUrl('/wishlist')
+
          }
 
        })
@@ -82,7 +90,7 @@ public onRegisterFormSubmit():void {
     })
     
   }
-  this.registerForm.reset()
+  location.reload();
 
 }
 
