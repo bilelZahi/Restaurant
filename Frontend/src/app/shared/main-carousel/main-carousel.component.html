@@ -8,7 +8,9 @@
             <div fxLayout="column" fxLayoutAlign="center center" class="content">
               <h1>{{slide.title}}</h1>
               <h3>{{slide.subtitle}}</h3>
-              <button mat-raised-button color="primary">Shop now</button>
+              <button mat-raised-button color="primary" (click)="toBurger()" >{{slide.button1}}</button>
+              <button mat-raised-button color="primary" (click)="toSandwiches()" >{{slide.button2}}</button>
+              <button mat-raised-button color="primary" (click)="toTacos()" >{{slide.button3}}</button>
             </div> 
         </div>
       </div>
