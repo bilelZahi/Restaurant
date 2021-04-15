@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SwiperConfigInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-main-carousel',
@@ -16,7 +18,7 @@ export class MainCarouselComponent implements OnInit {
     clickable: true
   };
   
-  constructor() { }
+  constructor( private route : Router) { }
 
   ngOnInit() { }
 
@@ -38,6 +40,16 @@ export class MainCarouselComponent implements OnInit {
       speed: 500,
       effect: "slide"
     }
+  }
+
+  toBurger(){
+    this.route.navigateByUrl('/contact')
+  }
+  toSandwiches(){
+    this.route.navigateByUrl('/contact')
+  }
+  toTacos(){
+    this.route.navigateByUrl('/contact')
   }
 
 }
