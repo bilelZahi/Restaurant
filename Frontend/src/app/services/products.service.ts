@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductsService {
   baseURL= environment.baseURL
-  constructor() { }
+  constructor(  public http : HttpClient) { }
 
  
   
