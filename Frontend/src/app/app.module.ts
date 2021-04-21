@@ -27,6 +27,7 @@ import { OptionsComponent } from './theme/components/options/options.component';
 import { FooterComponent } from './theme/components/footer/footer.component';
 
 
+
 @NgModule({
    imports: [
     BrowserModule,
@@ -48,7 +49,7 @@ import { FooterComponent } from './theme/components/footer/footer.component';
     SidenavMenuComponent,
     BreadcrumbComponent,
     OptionsComponent,
-    FooterComponent, 
+    FooterComponent,
   ], 
   providers: [
     AppSettings,

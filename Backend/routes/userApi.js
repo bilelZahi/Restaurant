@@ -32,7 +32,7 @@ router.post('/register', async (req, res) => {
             subject: "BIENVENUE !",
             text: "",
             html: `bonjour ` + req.body.Name + ` votre compte vient d'être créé <br> simple click <br>  http://localhost:4200 `
-
+   
          });
 
 

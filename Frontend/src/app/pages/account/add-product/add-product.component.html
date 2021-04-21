@@ -1,83 +1,81 @@
-
 <mat-tab-group>
-    <mat-tab label="Add-Burger"> 
-        <form [formGroup]="burgerForm" >
-            <mat-form-field appearance="fill">
-                <mat-label>nom</mat-label>
-                <input matInput formControlName=" nomBurger">
-              </mat-form-field><br>
-              <mat-form-field appearance="fill">
-                 
-                <mat-label>prix</mat-label>
-                <input matInput formControlName="prixBurger">
-              </mat-form-field><br>
-              
-              <mat-form-field appearance="fill">                
-                <mat-label>compositions</mat-label>
-                <input matInput formControlName="compositions">
-              </mat-form-field>
-              
+  <mat-tab label="Add Burger"> <br>
+    <form [formGroup]="burgerForm">
+      <mat-form-field appearance="fill">
+        <mat-label>nom du Burger</mat-label>
+        <input matInput formControlName=" nomBurger">
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
 
-              
-        </form>  
+        <mat-label>prix</mat-label>
+        <input matInput formControlName="prixBurger">
+      </mat-form-field><br>
 
-    </mat-tab>
-    <mat-tab label="Add-sandwich"> 
-        <form [formGroup]="sandwischForm" >
-            <mat-form-field appearance="fill">
-                <mat-label>nom</mat-label>
-                <input matInput formControlName="nom">
-              </mat-form-field><br>
-              <mat-form-field appearance="fill">
-                 
-                <mat-label>prix</mat-label>
-                <input matInput formControlName="prixPrincipale">
-              </mat-form-field><br>
-              
-              <mat-form-field appearance="fill">                
-                <mat-label>compositions</mat-label>
-                <input matInput formControlName="compositions">
-              </mat-form-field> 
-              </form>
-            </mat-tab>
+      <mat-form-field appearance="fill">
+        <mat-label>compositions</mat-label>
+        <input matInput formControlName="compositions">
+      </mat-form-field>
 
 
-    <mat-tab label="Add-tacos"> 
-        <form [formGroup]="tacosForm" >
-            <mat-form-field appearance="fill">
-                <mat-label>nom</mat-label>
-                <input matInput formControlName="nom">
-              </mat-form-field><br>
-              <mat-form-field appearance="fill">
-                 
-                <mat-label>prix</mat-label>
-                <input matInput formControlName="prixPrincipale">
-              </mat-form-field><br>
-              
-              <mat-form-field appearance="fill">                
-                <mat-label>compositions</mat-label>
-                <input matInput formControlName="compositions">
-              </mat-form-field> 
-            </form>
-             </mat-tab>
+
+    </form>
+
+  </mat-tab>
+  <mat-tab label="Add sandwich"> <br>
+    <form [formGroup]="sandwischForm">
+      <mat-form-field appearance="fill">
+        <mat-label>nom du sandwich</mat-label>
+        <input matInput formControlName="nom">
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+
+        <mat-label>prix</mat-label>
+        <input matInput formControlName="prixPrincipale">
+      </mat-form-field><br>
+
+      <mat-form-field appearance="fill">
+        <mat-label>compositions</mat-label>
+        <input matInput formControlName="compositions">
+      </mat-form-field>
+    </form>
+  </mat-tab>
 
 
-             <mat-tab label="Add-ingrediants"> 
-                <form [formGroup]="ingrediantsForm" >
-                    <mat-form-field appearance="fill">
-                        <mat-label>nom</mat-label>
-                        <input matInput formControlName="nomIngrediant">
-                      </mat-form-field><br>
-                      <mat-form-field appearance="fill">
-                         
-                        <mat-label>prix</mat-label>
-                        <input matInput formControlName="prixIngrediant">
-                      </mat-form-field>
-                      
-                     
-                    </form>
+  <mat-tab label="Add Ttacos"> <br>
+    <form [formGroup]="tacosForm">
+      <mat-form-field appearance="fill">
+        <mat-label>nom du tacos</mat-label>
+        <input matInput formControlName="nom">
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
 
-             </mat-tab>
-             
-  </mat-tab-group>
-  
+        <mat-label>prix</mat-label>
+        <input matInput formControlName="prixPrincipale">
+      </mat-form-field><br>
+
+      <mat-form-field appearance="fill">
+        <mat-label>compositions</mat-label>
+        <input matInput formControlName="compositions">
+      </mat-form-field>
+    </form>
+  </mat-tab>
+
+
+  <mat-tab label="Add ingrediants"> <br>
+    <form [formGroup]="ingrediantsForm">
+      <mat-form-field appearance="fill">
+        <mat-label>nom d'ingrediant</mat-label>
+        <input matInput formControlName="nomIngrediant">
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+
+        <mat-label>prix</mat-label>
+        <input matInput formControlName="prixIngrediant">
+      </mat-form-field>
+
+
+    </form>
+
+  </mat-tab>
+
+</mat-tab-group>

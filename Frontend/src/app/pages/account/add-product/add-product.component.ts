@@ -9,10 +9,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddProductComponent implements OnInit {
 
  burgerForm:FormGroup;
- sandwischForm:FormGroup;
+ sandwichForm:FormGroup;
  tacosForm:FormGroup;
  ingrediantsForm:FormGroup
   constructor() { }
+  
 
   ngOnInit() {
     this. burgerForm = new FormGroup({
@@ -22,8 +23,8 @@ export class AddProductComponent implements OnInit {
     })
 
 
-    this.sandwischForm=new FormGroup({
-      nom : new FormControl('', Validators.required),
+    this.sandwichForm=new FormGroup({
+      nomSandwich : new FormControl('', Validators.required),
       prixPrincipale : new FormControl('', Validators.required),
       compositions : new FormControl('', Validators.required),
 
@@ -45,5 +46,7 @@ export class AddProductComponent implements OnInit {
       
     })
   }
+
+
 
 }
