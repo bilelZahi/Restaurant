@@ -16,17 +16,17 @@ export class AddProductComponent implements OnInit {
  ingrediantsForm:FormGroup
   constructor() { }
   
-  files: File[] = [];
+  // files: File[] = [];
 
-  onSelect(event) {
-    console.log(event);
-    this.files.push(...event.addedFiles);
-  }
+  // onSelect(event) {
+  //   console.log(event);
+  //   this.files.push(...event.addedFiles);
+  // }
   
-  onRemove(event) {
-    console.log(event);
-    this.files.splice(this.files.indexOf(event), 1);
-  }
+  // onRemove(event) {
+  //   console.log(event);
+  //   this.files.splice(this.files.indexOf(event), 1);
+  // }
 
   ngOnInit() {
     this. burgerForm = new FormGroup({
