@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -8,12 +9,24 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AddProductComponent implements OnInit {
 
+
  burgerForm:FormGroup;
  sandwichForm:FormGroup;
  tacosForm:FormGroup;
  ingrediantsForm:FormGroup
   constructor() { }
   
+  files: File[] = [];
+
+  onSelect(event) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+  }
+  
+  onRemove(event) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+  }
 
   ngOnInit() {
     this. burgerForm = new FormGroup({
@@ -45,7 +58,10 @@ export class AddProductComponent implements OnInit {
 
       
     })
+
+    
   }
+ 
 
 
 
