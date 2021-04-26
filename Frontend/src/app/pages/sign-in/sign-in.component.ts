@@ -43,7 +43,7 @@ export class SignInComponent implements OnInit {
          
         if(JSON.parse(JSON.stringify(res)).message=='email or password is invalid!'){
 
-          this.snackBar.open('verif pass or email', '×', { panelClass: 'warn', verticalPosition: 'top', duration: 3000 });
+          this.snackBar.open('verify your password or email', '×', { panelClass: 'warn', verticalPosition: 'top', duration: 3000 });
 
          
          }
@@ -52,13 +52,13 @@ export class SignInComponent implements OnInit {
           this.snackBar.open('admin login successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 })
 
           
-          this.router.navigateByUrl('account/information')
+          this.router.navigateByUrl('account/addProduct')
          
          }
          else {
           this.snackBar.open('client login successfully!', '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 })
 
-          this.router.navigateByUrl('/wishlist')
+          this.router.navigateByUrl('/')
 
          }
 
@@ -90,7 +90,6 @@ public onRegisterFormSubmit():void {
     })
     
   }
-  location.reload();
 
 }
 

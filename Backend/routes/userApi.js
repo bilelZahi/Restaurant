@@ -10,7 +10,7 @@ const jwt = require('jsonwebtoken')
 
 router.post('/register', async (req, res) => {
 
-   const addUser = await User.findOne({ email: req.body.email });
+   const addUser = await User.findOne({ email: req.body.email , Name : req.body.Name });
 
    if (addUser == null) {
 
@@ -29,8 +29,8 @@ router.post('/register', async (req, res) => {
             from: 'Point.B.restaurant@gmail.com',
             to: req.body.email,
 
-            subject: "BIENVENUE !",
-            text: "",
+            subject: "BIENVENUE ! " ,
+            text: req.body.Name ,
             html: `bonjour ` + req.body.Name + ` votre compte vient d'être créé <br> simple click <br>  http://localhost:4200 `
    
          });
