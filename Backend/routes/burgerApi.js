@@ -1,11 +1,34 @@
 const express = require("express");
-
 const Burger = require("../models/burgerSchema");
 const router = express.Router();
+const path = require ('path');
+
+const multer = require('multer');
+
+
+////////////////////////////////////////////////////////////////////////
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'images');
+    },
+    filename: (req, file, cb) => {
+        const newFileName = Date.now() + path.extname(file.originalname);
+        cb(null, newFileName);
+    }
+});
+
+const upload = multer({ storage: storage });
 
 /////////////////////////////////////////
 
-router.post("/burger", (req, res) => {
+router.post("/burger",  upload.single('imageBurger') , (req, res) => {
+
+  // console.log(req.file.filename);
+  // console.log(req.body);
+
+  req.body.imageBurger = req.file.filename
+
   const burger = new Burger(req.body);
   burger.save()
     .then((result) => {
@@ -25,7 +48,10 @@ router.delete('/deleteBurger/:id',(req,res)=> {
 
 ////////////////////////////////////////
 
-  router.put('/editBurger/:id' , (req,res)=> {
+  router.put('/editBurger/:id' ,  upload.single('imageBurger') , (req,res)=> {
+    
+    req.body.imageBurger = req.file.filename
+
     Burger.findByIdAndUpdate(req.params.id,req.body,{new:true})
 
     .then(result => {res.send(result)})

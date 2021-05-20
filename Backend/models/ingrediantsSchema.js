@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ingrediantsSchema = new Schema({
     prixIngrediant : String ,
     nomIngrediant : String ,
-    image:String
+    imageIngrediant:String
     
 }, {timesTamps:true});
 

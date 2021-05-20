@@ -5,7 +5,7 @@ const sandwichSchema = new Schema({
     prixPrincipale : String ,
     nom : String ,
     compositions : Array,
-    image : String,
+    imageSandwich : String,
 
     ingrediants : [{type : Schema.Types.ObjectId , ref : 'ingrediant'}],
 

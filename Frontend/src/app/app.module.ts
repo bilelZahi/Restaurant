@@ -6,7 +6,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { AgmCoreModule } from '@agm/core';
 
 import { OverlayContainer, Overlay } from '@angular/cdk/overlay';
-import { MAT_MENU_SCROLL_STRATEGY } from '@angular/material';
+import {  MAT_MENU_SCROLL_STRATEGY } from '@angular/material';
 import { CustomOverlayContainer } from './theme/utils/custom-overlay-container';
 import { menuScrollStrategy } from './theme/utils/scroll-strategy';
 
@@ -37,6 +37,8 @@ import { FooterComponent } from './theme/components/footer/footer.component';
     BrowserAnimationsModule,
     HttpClientModule,
     // NgxDropzoneModule,
+    // MatIcon,
+
     NgxSpinnerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDLf9Ywk47zipEtorDewwMmB3JtuXdzYL4'

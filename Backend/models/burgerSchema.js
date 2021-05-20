@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const burgerSchema = new Schema({
     
-    prixBurger : String ,
-    nomBurger : String ,
+    prixPrincipale : String ,
+    nom : String ,
     compositions : Array,
-    image : String,
+    imageBurger : String,
 
     ingrediants : [{type : Schema.Types.ObjectId , ref : 'ingrediant'}],
 

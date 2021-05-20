@@ -1,11 +1,30 @@
 const express = require("express");
-
 const Tacos = require("../models/tacosSchema");
 const router = express.Router();
+const multer = require('multer');
+const path = require ('path');
+
+////////////////////////////////////////////////////////////////////////
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'images');
+    },
+    filename: (req, file, cb) => {
+        const newFileName = Date.now() + path.extname(file.originalname);
+        cb(null, newFileName);
+    }
+});
+
+const upload = multer({ storage: storage });
 
 ////////////////// add_sandwich ///////////////////////
 
-router.post("/tacos", (req, res) => {
+router.post("/tacos",  upload.single('imageTacos') , (req, res) => {
+
+  req.body.imageTacos = req.file.filename
+
+
   const tacos = new Tacos(req.body);
   tacos.save()
     .then((result) => {
@@ -25,7 +44,11 @@ router.delete('/deleteTacos/:id',(req,res)=> {
 
 //////////////// edit_sandwich ///////////////////////
 
-  router.put('/editTacos/:id' , (req,res)=> {
+  router.put('/editTacos/:id' ,  upload.single('imageTacos') , (req,res)=> {
+
+    req.body.imageTacos = req.file.filename
+
+
     Tacos.findByIdAndUpdate(req.params.id,req.body,{new:true})
 
     .then(result => {res.send(result)})
