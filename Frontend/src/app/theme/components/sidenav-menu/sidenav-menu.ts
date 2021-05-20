@@ -25,7 +25,7 @@ export const sidenavMenuItems = [
     new SidenavMenu (42, 'Bags & Wallet', '/products/bags & wallet', null, null, false, 40),
     new SidenavMenu (43, 'Sunglasses', '/products/sunglasses', null, null, false, 40),
     new SidenavMenu (44, 'Belts & Hats', '/products/belts & hats', null, null, false, 40),
-    new SidenavMenu (50, 'Jewellery', '/products/jewellery', null, null, false, 0), 
+    new SidenavMenu (50, 'Sandwiches', '/products/Sandwiches', null, null, false, 0), 
     new SidenavMenu (51, 'Electronics', '/products/electronics', null, null, false, 0), 
     new SidenavMenu (52, 'Sports', '/products/sports', null, null, false, 0),
     new SidenavMenu (52, 'Motors', '/products/motors', null, null, false, 0),

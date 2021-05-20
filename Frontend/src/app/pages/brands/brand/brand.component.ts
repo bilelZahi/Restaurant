@@ -19,7 +19,7 @@ export class BrandComponent implements OnInit {
   public viewCol: number = 25;
   public counts = [12, 24, 36];
   public count:any;
-  public sortings = ['Sort by Default', 'Best match', 'Lowest first', 'Highest first'];
+  // public sortings = ['Sort by Default', 'Best match', 'Lowest first', 'Highest first'];
   public sort:any;
   public products: Array<Product> = [];
   public categories:Category[];
@@ -40,7 +40,7 @@ export class BrandComponent implements OnInit {
 
   ngOnInit() {
     this.count = this.counts[0];
-    this.sort = this.sortings[0];
+    // this.sort = this.sortings[0];
     this.sub = this.activatedRoute.params.subscribe(params => {
      // console.log(params['name']);
     });

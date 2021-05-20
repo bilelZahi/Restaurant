@@ -1,11 +1,26 @@
 const express = require("express");
-
 const Sandwich = require("../models/sandwichSchema");
 const router = express.Router();
+const path = require ('path');
+const multer = require('multer');
+
+////////////////////////////////////////////////////////////////////////
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'images');
+    },
+    filename: (req, file, cb) => {
+        const newFileName = Date.now() + path.extname(file.originalname);
+        cb(null, newFileName);
+    }
+});
+
+const upload = multer({ storage: storage });
 
 ////////////////// add_sandwich ///////////////////////
 
-router.post("/sandwich", (req, res) => {
+router.post("/sandwich", upload.single('seulImage') , (req, res) => {
   const sandwich = new Sandwich(req.body);
   sandwich.save()
     .then((result) => {
@@ -25,7 +40,7 @@ router.delete('/deleteSandwich/:id',(req,res)=> {
 
 //////////////// edit_sandwich ///////////////////////
 
-  router.put('/editSandwich/:id' , (req,res)=> {
+  router.put('/editSandwich/:id' , upload.single('seulImage') , (req,res)=> {
     Sandwich.findByIdAndUpdate(req.params.id,req.body,{new:true})
 
     .then(result => {res.send(result)})

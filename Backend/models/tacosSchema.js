@@ -5,7 +5,7 @@ const tacosShema = new Schema({
     prixPrincipale : String ,
     nom : String ,
     compositions : Array,
-    image : String,
+    imageTacos : String,
 
     ingrediants : [{type : Schema.Types.ObjectId , ref : 'ingrediant'}],
 

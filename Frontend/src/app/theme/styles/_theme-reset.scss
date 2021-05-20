@@ -61,6 +61,9 @@
     .mat-snack-bar-container.success {
         background: #388E3C;
     }
+    .mat-snack-bar-container.close {
+        background: red;
+    }
     .mat-snack-bar-container.error {
         background: #E53935;
     }

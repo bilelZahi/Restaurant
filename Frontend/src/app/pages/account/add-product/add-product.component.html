@@ -1,28 +1,68 @@
 <mat-tab-group>
-  <mat-tab label="Add Burger"> <br>
-    <form [formGroup]="burgerForm">
+
+
+  <mat-tab label="Add burger"> <br>
+    <form [formGroup]="burgerForm" #formDirective="ngForm" >
       <mat-form-field appearance="fill">
         <mat-label>nom du Burger</mat-label>
-        <input matInput formControlName=" nomBurger">
+        <input matInput formControlName="nom">
       </mat-form-field><br>
       <mat-form-field appearance="fill">
 
         <mat-label>prix</mat-label>
-        <input matInput formControlName="prixBurger">
+        <input matInput formControlName="prixPrincipale">
       </mat-form-field><br>
+
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>compositions</mat-label>
+        <input matInput formControlName="compositions">
+      </mat-form-field><br> -->
 
       <mat-form-field appearance="fill">
         <mat-label>compositions</mat-label>
-        <input matInput formControlName="compositions">
-      </mat-form-field>
+        <textarea matInput formControlName="compositions"></textarea> 
+      </mat-form-field><br> <br>
 
+      <input type="file" formControlName="imageBurger">
+
+      <!-- <mat-form-field>
+        <ngx-mat-file-input formControlName="basicfile" placeholder="Basic Input" ></ngx-mat-file-input>
+        <mat-icon matSuffix>folder</mat-icon>
+      </mat-form-field> -->
+
+
+
+
+      <!-- <mat-form-field appearance="fill">
+        <input id="fileInput" name="file" type="file" class="ng-hide" multiple>
+        <textarea matInput formControlName="imageBurger"></textarea> 
+      </mat-form-field> -->
+      
+
+
+        <!-- <ngx-dropzone (change)="onSelect($event)">
+    <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+      <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+    </ngx-dropzone-preview>
+  </ngx-dropzone> -->
+      
+      <br> <br>
+
+
+      <button mat-raised-button color="primary" (click)="addBurger()" >add burger</button>
 
 
     </form>
-
   </mat-tab>
+
+
+<!------------------------------------------------------------------------------------------>
+
+
+
   <mat-tab label="Add sandwich"> <br>
-    <form [formGroup]="sandwischForm">
+    <form [formGroup]="sandwichForm">
       <mat-form-field appearance="fill">
         <mat-label>nom du sandwich</mat-label>
         <input matInput formControlName="nom">
@@ -33,15 +73,31 @@
         <input matInput formControlName="prixPrincipale">
       </mat-form-field><br>
 
-      <mat-form-field appearance="fill">
+      <!-- <mat-form-field appearance="fill">
         <mat-label>compositions</mat-label>
         <input matInput formControlName="compositions">
-      </mat-form-field>
+      </mat-form-field><br> -->
+
+      <mat-form-field appearance="fill">
+        <mat-label>compositions</mat-label>
+        <textarea matInput formControlName="compositions"></textarea> 
+      </mat-form-field><br> <br>
+
+      <input type="file" formControlName="imageSandwich"> <br><br>
+
+
+      <button mat-raised-button color="primary" (click)="addSandwich()" >add sandwich</button>
+
+
     </form>
   </mat-tab>
 
 
-  <mat-tab label="Add Ttacos"> <br>
+  <!------------------------------------------------------------------------------------------>
+
+
+
+  <mat-tab label="Add tacos"> <br>
     <form [formGroup]="tacosForm">
       <mat-form-field appearance="fill">
         <mat-label>nom du tacos</mat-label>
@@ -53,13 +109,26 @@
         <input matInput formControlName="prixPrincipale">
       </mat-form-field><br>
 
-      <mat-form-field appearance="fill">
+      <!-- <mat-form-field appearance="fill">
         <mat-label>compositions</mat-label>
         <input matInput formControlName="compositions">
-      </mat-form-field>
+      </mat-form-field><br> -->
+
+      <mat-form-field appearance="fill">
+        <mat-label>compositions</mat-label>
+        <textarea matInput formControlName="compositions"></textarea> 
+      </mat-form-field><br> <br>
+
+      <input type="file" formControlName="imageTacos"><br><br>
+
+
+      <button mat-raised-button color="primary" (click)="addTacos()" >add tacos</button>
+
+
     </form>
   </mat-tab>
 
+<!------------------------------------------------------------------------------------------>
 
   <mat-tab label="Add ingrediants"> <br>
     <form [formGroup]="ingrediantsForm">
@@ -71,12 +140,17 @@
 
         <mat-label>prix</mat-label>
         <input matInput formControlName="prixIngrediant">
-      </mat-form-field>
+      </mat-form-field><br>
 
+
+      <input type="file" formControlName="imageIngrediant"><br><br>
+
+      <button mat-raised-button color="primary" (click)="addIngrediant()" >add ingrediant</button>
 
     </form>
-
   </mat-tab>
+
+  
   
   <!-- <ngx-dropzone (change)="onSelect($event)">
     <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>

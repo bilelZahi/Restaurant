@@ -389,12 +389,11 @@ export class AppService {
     }
 
     public getYears(){
-        return ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" ]
+        return ["2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" ]
     }
 
     public getDeliveryMethods(){
         return [
-            { value: 'free', name: 'Free Delivery', desc: '$0.00 / Delivery in 7 to 14 business Days' },
             { value: 'standard', name: 'Standard Delivery', desc: '$7.99 / Delivery in 5 to 7 business Days' },
             { value: 'express', name: 'Express Delivery', desc: '$29.99 / Delivery in 1 business Days' }
         ]
