@@ -20,7 +20,11 @@ const upload = multer({ storage: storage });
 
 /////////////////////////////////////////
 
-router.post("/ingrediant",upload.single('seulImage') , (req, res) => {
+router.post("/ingrediant",upload.single('imageIngrediant') , (req, res) => {
+
+  req.body.imageIngrediant = req.file.filename
+
+
   const ingrediant = new Ingrediant(req.body);
   ingrediant.save()
     .then((result) => {
@@ -40,7 +44,11 @@ router.delete('/deleteIngrediant/:id',(req,res)=> {
 
 //////////////////////////////////////////////
 
-  router.put('/editIngrediant/:id' , upload.single('seulImage') , (req,res)=> {
+  router.put('/editIngrediant/:id' , upload.single('imageIngrediant') , (req,res)=> {
+
+    req.body.imageIngrediant = req.file.filename
+
+
     Ingrediant.findByIdAndUpdate(req.params.id,req.body,{new:true})
 
     .then(result => {res.send(result)})

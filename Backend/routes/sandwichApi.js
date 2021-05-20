@@ -20,7 +20,12 @@ const upload = multer({ storage: storage });
 
 ////////////////// add_sandwich ///////////////////////
 
-router.post("/sandwich", upload.single('seulImage') , (req, res) => {
+router.post("/sandwich", upload.single('imageSandwich') , (req, res) => {
+
+  req.body.imageSandwich = req.file.filename
+
+
+
   const sandwich = new Sandwich(req.body);
   sandwich.save()
     .then((result) => {
@@ -40,7 +45,7 @@ router.delete('/deleteSandwich/:id',(req,res)=> {
 
 //////////////// edit_sandwich ///////////////////////
 
-  router.put('/editSandwich/:id' , upload.single('seulImage') , (req,res)=> {
+  router.put('/editSandwich/:id' , upload.single('imageSandwich') , (req,res)=> {
     Sandwich.findByIdAndUpdate(req.params.id,req.body,{new:true})
 
     .then(result => {res.send(result)})

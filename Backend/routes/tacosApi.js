@@ -20,7 +20,11 @@ const upload = multer({ storage: storage });
 
 ////////////////// add_sandwich ///////////////////////
 
-router.post("/tacos",  upload.single('seulImage') , (req, res) => {
+router.post("/tacos",  upload.single('imageTacos') , (req, res) => {
+
+  req.body.imageTacos = req.file.filename
+
+
   const tacos = new Tacos(req.body);
   tacos.save()
     .then((result) => {
@@ -40,7 +44,11 @@ router.delete('/deleteTacos/:id',(req,res)=> {
 
 //////////////// edit_sandwich ///////////////////////
 
-  router.put('/editTacos/:id' ,  upload.single('seulImage') , (req,res)=> {
+  router.put('/editTacos/:id' ,  upload.single('imageTacos') , (req,res)=> {
+
+    req.body.imageTacos = req.file.filename
+
+
     Tacos.findByIdAndUpdate(req.params.id,req.body,{new:true})
 
     .then(result => {res.send(result)})
