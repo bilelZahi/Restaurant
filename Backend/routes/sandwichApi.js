@@ -23,9 +23,6 @@ const upload = multer({ storage: storage });
 router.post("/sandwich", upload.single('imageSandwich') , (req, res) => {
 
   req.body.imageSandwich = req.file.filename
-
-
-
   const sandwich = new Sandwich(req.body);
   sandwich.save()
     .then((result) => {
@@ -47,7 +44,6 @@ router.delete('/deleteSandwich/:id',(req,res)=> {
 
   router.put('/editSandwich/:id' , upload.single('imageSandwich') , (req,res)=> {
     Sandwich.findByIdAndUpdate(req.params.id,req.body,{new:true})
-
     .then(result => {res.send(result)})
     .catch (err => console.log(err))
   })

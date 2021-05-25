@@ -8,7 +8,6 @@ const sandwichSchema = new Schema({
     imageSandwich : String,
 
     ingrediants : [{type : Schema.Types.ObjectId , ref : 'ingrediant'}],
-
     
 }, {timesTamps:true});
 
