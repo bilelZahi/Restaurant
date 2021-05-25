@@ -18,13 +18,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-////////////////// add_sandwich ///////////////////////
+////////////////// add_sandwich with image ///////////////////////
 
 router.post("/tacos",  upload.single('imageTacos') , (req, res) => {
 
   req.body.imageTacos = req.file.filename
-
-
   const tacos = new Tacos(req.body);
   tacos.save()
     .then((result) => {
@@ -47,10 +45,7 @@ router.delete('/deleteTacos/:id',(req,res)=> {
   router.put('/editTacos/:id' ,  upload.single('imageTacos') , (req,res)=> {
 
     req.body.imageTacos = req.file.filename
-
-
     Tacos.findByIdAndUpdate(req.params.id,req.body,{new:true})
-
     .then(result => {res.send(result)})
     .catch (err => console.log(err))
   })
